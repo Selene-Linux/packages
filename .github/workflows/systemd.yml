@@ -43,13 +43,16 @@ jobs:
          -Dversion-tag="systemd v262 (selene)" \
          -Dmode=release \
          -Dsbat-distro='selene' \
-         -Dsbat-distro-summary= "Selene Linux" \
+         -Dsbat-distro-summary="Selene Linux" \
          -Dsbat-distro-pkgname="systemd"
-         -Dsbat-distro-version="v262"
+         -Dsbat-distro-version="v262" \
 
       - name: build
         run: ninja -C build/
 
+      - name: cleanup
+        run: rm build/*/*.o
+   
       - name: upload
         uses: actions/upload-artifact@v7.0.1
         with: 
