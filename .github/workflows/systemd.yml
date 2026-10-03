@@ -55,7 +55,9 @@ jobs:
          -Dsbat-distro-version="v262"
 
       - name: build
-        run: ninja -C build/
+        run: |
+         mkdir build
+         ninja -C build/
 
       - name: cleanup
         run: rm build/*/*.o
