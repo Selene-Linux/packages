@@ -61,7 +61,7 @@ jobs:
          ninja -C build/
 
       - name: cleanup
-        run: rm build/*/*.o
+        run: rm -f systemd/build/*/*.o
    
       - name: upload
         uses: actions/upload-artifact@v7.0.1
