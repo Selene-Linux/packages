@@ -61,8 +61,11 @@ jobs:
          ninja -C build/
 
       - name: cleanup
-        run: rm -f systemd/build/*/*.o
-   
+        run: |
+          rm -rf systemd/build/meson-* \
+          systemd/build/**/test-* \
+          systemd/build/**/*.o \
+          systemd/build/**/*.p
       - name: upload
         uses: actions/upload-artifact@v7.0.1
         with: 
