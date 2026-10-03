@@ -26,7 +26,7 @@ jobs:
            mkdir build
            cd build
 
-           ../glibc/configure
+           ../glibc/configure --prefix=/usr --disable-werror
 
         - name: build glibc
           run: |
