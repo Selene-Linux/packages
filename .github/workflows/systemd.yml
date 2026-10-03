@@ -1,0 +1,56 @@
+name: systemd-build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  
+  build:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git \
+            meson \
+            ninja-build \
+            gperf \
+            libcap-dev \
+            libmount-dev \
+            libblkid-dev \
+            libkmod-dev \
+            libzstd-dev \
+            liblzma-dev
+
+      - name: clone systemd
+        run: |
+         git clone --depth 1 https://github.com/systemd/systemd
+
+      - name: configure
+        run: |
+         cd systemd
+         meson setup build/ \
+         -Dversion-tag="systemd v262 (selene)" \
+         -Dmode=release \
+         -Dsbat-distro='selene' \
+         -Dsbat-distro-summary= "Selene Linux" \
+         -Dsbat-distro-pkgname="systemd"
+         -Dsbat-distro-version="v262"
+
+      - name: build
+        run: ninja -C build/
+
+      - name: upload
+        uses: actions/upload-artifact@v7.0.1
+        with: 
+          path: build/ 
