@@ -1,6 +1,6 @@
 name: glibc
 
-on: [push, pull_request]
+on: workflow_dispatch:
 
 jobs:
   glibc:
@@ -18,8 +18,8 @@ jobs:
           python3
 
        - name: clone glibc
-        run: |
-         git clone --depth 1 https://sourceware.org/git/glibc.git
+         run: |
+          git clone --depth 1 https://sourceware.org/git/glibc.git
 
        - name: configure glibc
          run: |
