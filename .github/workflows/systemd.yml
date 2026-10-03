@@ -37,7 +37,8 @@ jobs:
             pkg-config \
             python3-pyelftools \
             python3-jinja2 \
-            xsltproc
+            xsltproc \
+            python3-pefile
             
       - name: clone systemd
         run: |
