@@ -31,7 +31,15 @@ jobs:
             libkmod-dev \
             libzstd-dev \
             liblzma-dev
-
+            libseccomp-dev \
+            libpam0g-dev \
+            libcryptsetup-dev \
+            libssl-dev \
+            pkg-config \
+            python3-pyelftools \
+            python3-jinja2 \
+            xsltproc
+            
       - name: clone systemd
         run: |
          git clone --depth 1 https://github.com/systemd/systemd
@@ -44,8 +52,8 @@ jobs:
          -Dmode=release \
          -Dsbat-distro='selene' \
          -Dsbat-distro-summary="Selene Linux" \
-         -Dsbat-distro-pkgname="systemd"
-         -Dsbat-distro-version="v262" \
+         -Dsbat-distro-pkgname="systemd" \
+         -Dsbat-distro-version="v262"
 
       - name: build
         run: ninja -C build/
