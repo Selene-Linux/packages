@@ -56,7 +56,7 @@ jobs:
 
       - name: build
         run: |
-         mkdir build
+         cd systemd
          ninja -C build/
 
       - name: cleanup
