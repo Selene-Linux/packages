@@ -66,4 +66,4 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v7.0.1
         with: 
-          path: build/ 
+          path: systemd/build/ 
