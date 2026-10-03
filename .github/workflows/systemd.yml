@@ -57,7 +57,7 @@ jobs:
 
       - name: cleanup
         run: |
-          rm -rf systemd/build/meson-* systemd/build/*.o systemd/build/test-* systemd/build/test-*-* systemd/build/*.p systemd/build/fuzz-* systemd/build/test systemd/build/src
+          rm -rf systemd/build/meson-* systemd/build/*.o systemd/build/test-* systemd/build/test-*-* systemd/build/*.p systemd/build/fuzz-* systemd/build/test
       - name: upload
         uses: actions/upload-artifact@v7.0.1
         with: 
