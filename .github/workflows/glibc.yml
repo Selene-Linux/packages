@@ -1,44 +1,43 @@
 name: glibc
 
-on: 
-workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   glibc:
     runs-on: ubuntu-latest
     
     steps:
-       - name: dependencies
-         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-          gawk \
-          bison \
-          make \
-          texinfo \
-          python3
+        - name: dependencies
+          run: |
+           sudo apt-get update
+           sudo apt-get install -y \
+           gawk \
+           bison \
+           make \
+           texinfo \
+           python3
 
-       - name: clone glibc
-         run: |
-          git clone --depth 1 https://sourceware.org/git/glibc.git
+        - name: clone glibc
+          run: |
+           git clone --depth 1 https://sourceware.org/git/glibc.git
 
-       - name: configure glibc
-         run: |
-          mkdir build
-          cd build
+        - name: configure glibc
+          run: |
+           mkdir build
+           cd build
 
-          ../glibc/configure
+           ../glibc/configure
 
-       - name: build glibc
-         run: |
+        - name: build glibc
+          run: |
            cd build
            make -j$(nproc)
         
-       - name: upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: glibc
-          path: |
+        - name: upload
+          uses: actions/upload-artifact@v4
+          with:
+           name: glibc
+           path: |
             build/**/*.so*
             build/libc.a
 
