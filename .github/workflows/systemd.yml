@@ -30,8 +30,7 @@ jobs:
             libblkid-dev \
             libkmod-dev \
             libzstd-dev \
-            liblzma-dev
-            libseccomp-dev \
+            liblzma-dev \
             libpam0g-dev \
             libcryptsetup-dev \
             libssl-dev \
