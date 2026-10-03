@@ -30,7 +30,7 @@ jobs:
 
        - name: build glibc
          run: |
-           cd glibc-build
+           cd build
            make -j$(nproc)
         
        - name: upload
@@ -38,6 +38,6 @@ jobs:
         with:
           name: glibc
           path: |
-            glibc-build/**/*.so*
-            glibc-build/libc.a
+            build/**/*.so*
+            build/libc.a
 
