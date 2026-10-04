@@ -35,7 +35,7 @@ jobs:
            
         - name: clean up
           run: |
-           mkdir out
+           mkdir -p out/x86_64-linux-gnu
            find build/ -type f \( -name "*.so*" -o -name "libc.a" \) -exec cp -v {} out/x86_64-linux-gnu/ \;
            
         - name: upload
