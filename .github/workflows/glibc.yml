@@ -32,12 +32,16 @@ jobs:
           run: |
            cd build
            make -j$(nproc)
-        
+           
+        - name: clean up
+          run: |
+           cd build 
+           find . -type f -exec mv -n -t x86_64-linux-gnu {} +
+           find . -mindepth 1 -type d -empty -delete 
+           
         - name: upload
           uses: actions/upload-artifact@v4
           with:
            name: glibc
-           path: |
-            build/**/*.so*
-            build/libc.a
+           path: build
 
