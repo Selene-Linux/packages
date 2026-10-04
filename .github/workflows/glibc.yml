@@ -35,14 +35,12 @@ jobs:
            
         - name: clean up
           run: |
-           cd build 
-           mkdir x86_64-linux-gnu
-           find . -type f -exec mv -n -t x86_64-linux-gnu {} +
-           find . -mindepth 1 -type d -empty -delete 
+           mkdir out
+           find build/ -type f \( -name "*.so*" -o -name "libc.a" \) -exec cp -v {} out/x86_64-linux-gnu \;
            
         - name: upload
           uses: actions/upload-artifact@v4
           with:
            name: glibc
-           path: build
+           path: out
 
