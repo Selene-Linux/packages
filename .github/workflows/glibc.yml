@@ -36,6 +36,7 @@ jobs:
         - name: clean up
           run: |
            cd build 
+           mkdir x86_64-linux-gnu
            find . -type f -exec mv -n -t x86_64-linux-gnu {} +
            find . -mindepth 1 -type d -empty -delete 
            
