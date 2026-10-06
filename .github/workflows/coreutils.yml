@@ -41,8 +41,15 @@ jobs:
           mkdir build
           cd build
           ../configure
-
+      
       - name: build
         run: |
           cd coreutils/build
           make -j"$(nproc)"
+          make install DESTDIR="$GITHUB_WORKSPACE/install"
+          
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: out
+          path: install/
