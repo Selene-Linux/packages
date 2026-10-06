@@ -40,7 +40,7 @@ jobs:
           cd coreutils
           mkdir build
           cd build
-          ../configure
+          ../configure --prefix=/usr
       
       - name: build
         run: |
