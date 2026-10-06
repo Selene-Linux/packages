@@ -31,8 +31,9 @@ jobs:
       - name: clone coreutils
         run: |
           git clone https://github.com/coreutils/coreutils.git
+          git clone https://github.com/coreutils/gnulib.git
           cd coreutils
-          ./bootstrap
+          ./bootstrap --gnulib-srcdir=../gnulib
 
       - name: configure
         run: |
